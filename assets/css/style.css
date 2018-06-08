@@ -1,0 +1,48 @@
+* {
+	box-sizing: border-box;
+}
+body{
+	background: url("../images/bg.jpg");
+	background-size: 100%;
+    color: black;
+}
+.jumbotron {
+    background-color: inherit;
+}
+.jumbotron h1 {
+    text-align: center;
+}
+
+img { 
+    height: 150px;
+    width: 150px;
+}
+.btn {
+    
+    margin: 3px;
+    background-color: #999999;
+    border-color: #fff;
+}
+.gifDiv{
+    float: left;
+    margin: 5px;
+    
+}
+
+.container {
+	background-color: #fff;
+	opacity: 0.8;
+    padding: 20px;
+    margin: auto;
+}
+
+.row {
+    margin: auto;
+}
+#gif-form {
+    clear: right;
+}
+
+ 
+
+
