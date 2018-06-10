@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
     // create An array of static action to show on the page load
     // new search will be pushed and added to this array later on
-    var gifArr = ["metallica", "simpsons", "family guy", "ufc", "freestyle", "speedracer", "Sky Diving", "Skiing", "Hiking","Beach", "Laughing", "snooping"];
+    var gifArr = ["metallica", "simpsons", "family guy", "ufc", "freestyle", "speedracer", "Sky Diving", "Skiing", "Hiking","Beach"];
     
     // Function that displays all gif buttons
     function allBtns(){
