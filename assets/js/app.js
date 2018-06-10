@@ -20,7 +20,7 @@ $( document ).ready(function() {
         }
     }
     // Function to dynamically add a new giphy search button to the gifArr array
-    function addNewBtn(){
+    function addBtn(){
         
         $("#addGif").on("click", function(){
         var search = $("#search-input").val().trim();
@@ -34,14 +34,9 @@ $( document ).ready(function() {
         return false;
         });
     }
-    // remove last search button
-    function rmLastBtn(){
-        $("removeGif").on("click", function(){
-        gifArr.pop(search);
-        allBtns();
-        return false;
-        });
-    }
+     console.log(addBtn); // check added button functionality
+
+    
 
 
     // create an ajax call to retreive all the gif buttons
@@ -59,7 +54,7 @@ $( document ).ready(function() {
             method: 'GET'
         })
         .done(function(response) {
-            console.log(response); 
+            console.log(response);  // check ajax call is being made properly
     
             // clear gifsView div everytime the button click is triggred to make space for new content
             $("#gifsView").empty();
@@ -67,7 +62,9 @@ $( document ).ready(function() {
             // return results into a variable called results
             var results = response.data; 
             if (results == ""){
-              console.log("NO content for this search, Try Again!");
+              console.log("No Content Here!");
+              location.reload(true); // reload page incase search doesnt exist
+                
             }
             for (var i=0; i<results.length; i++){
 
@@ -75,13 +72,8 @@ $( document ).ready(function() {
                 var gifDiv = $("<div>"); 
                 gifDiv.addClass("gifDiv");
 
-                // get rating of gif in the result var
-                var gifRating = $("<p>").text("Rating: " + results[i].rating);
-                // display rating on the page
-                gifDiv.append(gifRating);
-
                 // assign image tag to the gif pulled
-                var gifImage = $("<img>");
+                var gifImage = $("<img class='imgTag'>");
 
                 // pull the gifs from the source 
                 gifImage.attr("src", results[i].images.fixed_height_small_still.url);
@@ -101,6 +93,11 @@ $( document ).ready(function() {
 
                 //disply the gif on the page
                 gifDiv.append(gifImage);
+
+                // get rating of gif in the result var
+                var gifRating = $("<p>").text("Rating: " + results[i].rating);
+                // display rating on the page
+                gifDiv.append(gifRating);
                 
                 // adding div of gifs to display on the page
                 $("#gifsView").prepend(gifDiv);
@@ -109,8 +106,8 @@ $( document ).ready(function() {
     }
     
     allBtns(); 
-    addNewBtn();
-    rmLastBtn();
+    addBtn();
+    
 
     // add eventlistner on image click to either animate or still
     $(document).on("click", ".search", displayGifs);
